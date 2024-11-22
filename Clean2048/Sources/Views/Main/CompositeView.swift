@@ -106,6 +106,10 @@ struct CompositeView: View {
                     }
                     Spacer()
                 }
+                .onReceive(logic.$noPossibleMove) { (publisher) in
+                    let hasGameEnded = logic.noPossibleMove
+                    self.hasGameEnded = hasGameEnded
+                }
             }
             .gesture(gesture, including: .all)
     }
