@@ -11,7 +11,6 @@ struct CompositeView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     
     @State private var ignoreGesture = false
-    @State private var presentEndGameModal = false
     @State private var hasGameEnded = false
     @State private var viewState = CGSize.zero
     
@@ -106,14 +105,6 @@ struct CompositeView: View {
                         score = publishedScore
                     }
                     Spacer()
-                }
-                .onReceive(logic.$noPossibleMove) { (publisher) in
-                    let hasGameEnded = logic.noPossibleMove
-                    self.hasGameEnded = hasGameEnded
-                    
-                    withAnimation(.modalSpring) {
-                        self.presentEndGameModal = hasGameEnded
-                    }
                 }
             }
             .gesture(gesture, including: .all)

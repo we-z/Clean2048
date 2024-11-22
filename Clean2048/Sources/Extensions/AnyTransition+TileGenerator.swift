@@ -10,7 +10,7 @@ extension AnyTransition {
             removal: AnyTransition.opacity.combined(with: .modifier(
                 active: Merged(
                     first: AnchoredScale(scaleFactor: 0.8, anchor: anchor),
-                    second: BlurEffect(blurRaduis: 50)
+                    second: BlurEffect(blurRaduis: 0)
                 ),
                 identity: Merged(
                     first: AnchoredScale(scaleFactor: 1, anchor: anchor),

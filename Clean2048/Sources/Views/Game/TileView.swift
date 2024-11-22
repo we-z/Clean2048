@@ -8,6 +8,7 @@ struct TileView: View {
     @Environment(\.tileColorTheme) private var tileColorTheme: TileColorTheme
     @Environment(\.colorScheme) private var colorScheme: ColorScheme
     @State var scale = 0.1
+    @State var color: Color = .clear
     private var backgroundColor: Color {
         Color.gray.opacity(0.03)
     }
@@ -43,6 +44,7 @@ struct TileView: View {
             ZStack {
                 Rectangle()
                     .fill(tileColorTheme.background)
+                    .overlay(color)
                 
                 Text(title())
                     .font(.system(size: fontSize(proxy), weight: .bold, design: .monospaced))
@@ -54,9 +56,25 @@ struct TileView: View {
             .clipped()
             .cornerRadius(proxy.size.width / 9)
             .scaleEffect((number != nil) ? scale : 1)
+            .animation(
+                .linear(duration: 0.1),
+                value: scale
+            )
+            .animation(
+                .linear(duration: 0.1),
+                value: color
+            )
             .onAppear{
-                withAnimation(.linear(duration: 0.1)) {
-                    scale = 1.0
+                scale = 1.0
+            }
+            .onChange(of: number) { _ in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    color = .blue
+                    scale = 1.2
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                        color = .clear
+                        scale = 1.0
+                    }
                 }
             }
         }
