@@ -97,7 +97,7 @@ struct CompositeView: View {
                                 Color.white
                                     .opacity(0.1)
                             }
-                            .cornerRadius(12)
+                            .cornerRadius(6)
                     }
                     TileBoardView(matrix: logic.tiles,
                                   tileEdge: logic.lastGestureDirection.invertedEdge,

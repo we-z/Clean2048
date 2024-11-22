@@ -7,7 +7,7 @@ struct TileView: View {
     
     @Environment(\.tileColorTheme) private var tileColorTheme: TileColorTheme
     @Environment(\.colorScheme) private var colorScheme: ColorScheme
-    
+    @State var scale = 0.1
     private var backgroundColor: Color {
         Color.gray.opacity(0.03)
     }
@@ -53,6 +53,12 @@ struct TileView: View {
             .zIndex(Double.greatestFiniteMagnitude)
             .clipped()
             .cornerRadius(proxy.size.width / 9)
+            .scaleEffect((number != nil) ? scale : 1)
+            .onAppear{
+                withAnimation(.linear(duration: 0.1)) {
+                    scale = 1.0
+                }
+            }
         }
     }
     
