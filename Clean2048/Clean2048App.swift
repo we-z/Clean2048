@@ -11,7 +11,7 @@ import SwiftUI
 struct Clean2048App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CompositeView()
         }
     }
 }
