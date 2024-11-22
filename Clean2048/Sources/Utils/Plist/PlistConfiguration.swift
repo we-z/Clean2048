@@ -1,10 +1,4 @@
-//
-//  PlistConfiguration.swift
-//  T2iles
-//
-//  Created by Astemir Eleev on 21.07.2020.
-//  Copyright © 2020 Astemir Eleev. All rights reserved.
-//
+
 
 import Foundation
 
