@@ -32,7 +32,7 @@ struct TileMatrix<T>: CustomStringConvertible, CustomDebugStringConvertible wher
     
     
     private(set) var matrix: [[T?]]
-    private let size: Int
+    let size: Int
     
     // MARK: - Initializers
     

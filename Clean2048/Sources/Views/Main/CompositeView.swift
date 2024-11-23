@@ -78,25 +78,29 @@ struct CompositeView: View {
                     .ignoresSafeArea()
                 VStack {
                     HStack{
-                        Text("Tip $1")
-                            .bold()
-                            .font(.title3)
-                            .foregroundColor(.white)
-                            .padding(9)
-                            .padding(.horizontal, 6)
-                            .background{
-                                Color.white
-                                    .opacity(0.1)
-                            }
-                            .cornerRadius(6)
-                            .padding(.horizontal)
+                        Button {
+                            impactSoft.impactOccurred()
+                        } label: {
+                            Text("Tip $1")
+                                .bold()
+                                .font(.title3)
+                                .foregroundColor(.white)
+                                .padding(9)
+                                .padding(.horizontal, 6)
+                                .background{
+                                    Color.white
+                                        .opacity(0.1)
+                                }
+                                .cornerRadius(6)
+                                .padding(.horizontal)
+                        }
                         Spacer()
                     }
                     Spacer()
                     if hasGameEnded{
                         VStack {
                             Text("Game Over")
-                                .font(Font.system(.title))
+                                .font(Font.system(.largeTitle))
                                 .foregroundColor(.gray)
                             
                             Text("\(score)")
@@ -110,8 +114,8 @@ struct CompositeView: View {
                             
                             Spacer()
                             VStack {
-                                Text(hasGameEnded ? "Game Over" : "Score")
-                                    .font(Font.system(.title))
+                                Text("Score")
+                                    .font(Font.system(.largeTitle))
                                     .foregroundColor(.gray)
                                 
                                 Text("\(score)")
@@ -123,7 +127,7 @@ struct CompositeView: View {
                             Spacer()
                             VStack {
                                 Text("Best")
-                                    .font(Font.system(.title))
+                                    .font(Font.system(.largeTitle))
                                     .foregroundColor(.gray)
                                 
                                 Text("\(bestScore)")
@@ -137,21 +141,40 @@ struct CompositeView: View {
                         }
                     }
                     Spacer()
-                    Button {
-                        impactSoft.impactOccurred()
-                        resetGame()
-                    } label: {
-                        Text("Reset")
-                            .font(.title3)
-//                            .bold()
-                            .foregroundColor(.white)
-                            .padding()
-                            .padding(.horizontal)
-                            .background{
-                                Color.white
-                                    .opacity(0.1)
-                            }
-                            .cornerRadius(6)
+                    HStack {
+                        Spacer()
+                        Button {
+                            impactSoft.impactOccurred()
+                            resetGame()
+                        } label: {
+                            Text("Reset")
+                                .font(.title3)
+                                .foregroundColor(.white)
+                                .padding()
+                                .padding(.horizontal)
+                                .background{
+                                    Color.white
+                                        .opacity(0.1)
+                                }
+                                .cornerRadius(6)
+                        }
+                        Spacer()
+                        Button {
+                            impactSoft.impactOccurred()
+                            logic.undo()
+                        } label: {
+                            Text("Undo")
+                                .font(.title3)
+                                .foregroundColor(.white)
+                                .padding()
+                                .padding(.horizontal)
+                                .background{
+                                    Color.white
+                                        .opacity(0.1)
+                                }
+                                .cornerRadius(6)
+                        }
+                        Spacer()
                     }
                     TileBoardView(matrix: logic.tiles,
                                   tileEdge: logic.lastGestureDirection.invertedEdge,

@@ -44,6 +44,12 @@ struct TileView: View {
             ZStack {
                 Rectangle()
                     .fill(tileColorTheme.background)
+                    .overlay {
+                        if number != nil {
+                            Color.black
+                            tileColorTheme.background
+                        }
+                    }
                     .overlay(color)
                 
                 Text(title())
@@ -54,7 +60,7 @@ struct TileView: View {
             }
             .zIndex(Double.greatestFiniteMagnitude)
             .clipped()
-            .cornerRadius(proxy.size.width / 9)
+            .cornerRadius(proxy.size.width / 12)
             .scaleEffect((number != nil) ? scale : 1)
             .animation(
                 .linear(duration: 0.1),

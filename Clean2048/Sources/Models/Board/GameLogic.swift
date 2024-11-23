@@ -61,6 +61,9 @@ final class GameLogic: ObservableObject {
     
     @discardableResult
     func move(_ direction: Direction) -> State {
+        let currentState = GameState(tileMatrix: tileMatrix, score: score)
+        previousStates.append(currentState)
+        
         defer { objectWillChange.send(self) }
         defer { OperationQueue.main.addOperation { self.resetLastGestureDirection() } }
         
@@ -108,7 +111,28 @@ final class GameLogic: ObservableObject {
         )
     }
     
+    func undo() {
+        guard let lastState = previousStates.popLast() else {
+            return
+        }
+        self.tileMatrix = lastState.tileMatrix
+        self.score = lastState.score
+        self.noPossibleMove = !tileMatrix.isMovePossible()
+        self.objectWillChange.send(self)
+    }
+    
     // MARK: - Private Methods
+    
+    private struct GameState {
+            var tileMatrix: TileMatrix<IdentifiedTile>
+            var score: Int
+        }
+
+    private var previousStates: [GameState] = []
+
+    var canUndo: Bool {
+        return !previousStates.isEmpty
+    }
     
     private func computeIntermediateSnapshot(
         _ rowSnapshot: inout [IdentifiedTile?],
@@ -206,8 +230,8 @@ final class GameLogic: ObservableObject {
         resetLastGestureDirection()
         generateBlocks(generator: .double)
         score = 0
-//        mergeMultiplier = 0
         objectWillChange.send(self)
+        previousStates.removeAll()
     }
     
     private enum TileGenerator {
