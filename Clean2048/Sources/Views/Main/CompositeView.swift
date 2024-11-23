@@ -78,12 +78,17 @@ struct CompositeView: View {
                     .ignoresSafeArea()
                 VStack {
                     HStack{
+                        Text("2048 Pro")
+                            .font(.largeTitle)
+                            .foregroundColor(.white)
+                            .padding(.horizontal)
+                        Spacer()
                         Button {
                             impactLight.impactOccurred()
                         } label: {
-                            Text("Tip $1")
+                            Text("Tip $5")
                                 .bold()
-                                .font(.title3)
+                                .font(.title2)
                                 .foregroundColor(.white)
                                 .padding(9)
                                 .padding(.horizontal, 6)
@@ -94,7 +99,6 @@ struct CompositeView: View {
                                 .cornerRadius(6)
                                 .padding(.horizontal)
                         }
-                        Spacer()
                     }
                     Spacer()
                     if hasGameEnded{
@@ -141,6 +145,21 @@ struct CompositeView: View {
                         }
                     }
                     Spacer()
+                    Button {
+                        impactLight.impactOccurred()
+                    } label: {
+                        Text("Leaderboard")
+                            .font(.title3)
+                            .foregroundColor(.white)
+                            .padding()
+                            .padding(.horizontal)
+                            .background{
+                                Color.white
+                                    .opacity(0.1)
+                            }
+                            .cornerRadius(6)
+                            .padding()
+                    }
                     HStack {
                         Spacer()
                         Button {
