@@ -2,7 +2,7 @@
 import SwiftUI
 import Combine
 
-let impactSoft = UIImpactFeedbackGenerator(style: .soft)
+let impactLight = UIImpactFeedbackGenerator(style: .light)
 
 struct CompositeView: View {
     
@@ -79,7 +79,7 @@ struct CompositeView: View {
                 VStack {
                     HStack{
                         Button {
-                            impactSoft.impactOccurred()
+                            impactLight.impactOccurred()
                         } label: {
                             Text("Tip $1")
                                 .bold()
@@ -144,7 +144,7 @@ struct CompositeView: View {
                     HStack {
                         Spacer()
                         Button {
-                            impactSoft.impactOccurred()
+                            impactLight.impactOccurred()
                             resetGame()
                         } label: {
                             Text("Reset")
@@ -160,7 +160,7 @@ struct CompositeView: View {
                         }
                         Spacer()
                         Button {
-                            impactSoft.impactOccurred()
+                            impactLight.impactOccurred()
                             logic.undo()
                         } label: {
                             Text("Undo")
