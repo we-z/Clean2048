@@ -10,7 +10,7 @@ struct TileView: View {
     @State var scale = 0.1
     @State var color: Color = .clear
     private var backgroundColor: Color {
-        Color.gray.opacity(0.03)
+        Color.gray.opacity(0.015)
     }
     
     private let number: Int?

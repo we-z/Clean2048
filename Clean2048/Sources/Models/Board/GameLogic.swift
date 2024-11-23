@@ -175,6 +175,7 @@ final class GameLogic: ObservableObject {
             .map { (false, $0) }
             .reduce([(Bool, IdentifiedTile)]()) { acc, item in
                 if acc.last?.0 == false && acc.last?.1.value == item.1.value {
+                    // tile getting merged into dissappears here using dropLast
                     var accPrefix = Array(acc.dropLast())
                     var mergedBlock = item.1
                     mergedBlock.value *= 2

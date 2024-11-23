@@ -79,9 +79,11 @@ struct CompositeView: View {
                 VStack {
                     HStack{
                         Text("Tip $1")
-                            .font(.callout)
+                            .bold()
+                            .font(.title3)
                             .foregroundColor(.white)
-                            .padding(12)
+                            .padding(9)
+                            .padding(.horizontal, 6)
                             .background{
                                 Color.white
                                     .opacity(0.1)
