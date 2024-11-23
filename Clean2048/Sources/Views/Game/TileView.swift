@@ -35,6 +35,8 @@ struct TileView: View {
         return self.init()
     }
     
+    @State private var previousNumber: Int? = 2
+    
     // MARK: - Conformance to View protocol
     
     var body: some View {
@@ -73,15 +75,22 @@ struct TileView: View {
             .onAppear{
                 scale = 1.0
             }
-            .onChange(of: number) { _ in
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    color = .blue
-                    scale = 1.2
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-                        color = .clear
-                        scale = 1.0
+            .onChange(of: number) { newNumber in
+                if let previous = previousNumber {
+                    if let newNumber = newNumber, newNumber > previous {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            color = .blue
+                            scale = 1.2
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                                color = .clear
+                                scale = 1.0
+                            }
+                        }
                     }
                 }
+                
+                previousNumber = newNumber
+                
             }
         }
     }
