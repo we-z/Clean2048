@@ -9,7 +9,7 @@ struct CompositeView: View {
     // MARK: - Proeprties
     
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
-    
+    @AppStorage("bestScore") var bestScore: Int = 0
     @State private var ignoreGesture = false
     @State private var hasGameEnded = false
     @State private var viewState = CGSize.zero
@@ -19,7 +19,13 @@ struct CompositeView: View {
     
     @ObservedObject private var logic: GameLogic
     @Environment(\.colorScheme) private var colorScheme: ColorScheme
-    @State private var score: Int = 0
+    @State private var score: Int = 0 {
+        didSet {
+            if score > bestScore {
+                bestScore = score
+            }
+        }
+    }
     
     // MARK: - Initializers
     
@@ -72,8 +78,20 @@ struct CompositeView: View {
                     .ignoresSafeArea()
                 VStack {
                     Spacer()
-                    Text(hasGameEnded ? "Game Over" : "Score")
+                    Text("Best")
+                        .bold()
+                        .font(Font.system(.title))
+                        .foregroundColor(.gray)
+                    
+                    Text("\(bestScore)")
                         .font(Font.system(.largeTitle).weight(.black))
+                        .foregroundColor(.white)
+                        .transition(AnyTransition.move(edge: .bottom).combined(with: .opacity))
+                        .id("Score \(self.bestScore)")
+                    Spacer()
+                    Text(hasGameEnded ? "Game Over" : "Score")
+                        .bold()
+                        .font(Font.system(.largeTitle))
                         .foregroundColor(.gray)
                     
                     Text("\(score)")
@@ -81,6 +99,7 @@ struct CompositeView: View {
                         .foregroundColor(.white)
                         .transition(AnyTransition.move(edge: .bottom).combined(with: .opacity))
                         .id("Score \(self.score)")
+                    
                     Spacer()
                     Button {
                         impactSoft.impactOccurred()
@@ -104,7 +123,6 @@ struct CompositeView: View {
                     .onReceive(logic.$score) { (publishedScore) in
                         score = publishedScore
                     }
-                    Spacer()
                 }
                 .onReceive(logic.$noPossibleMove) { (publisher) in
                     let hasGameEnded = logic.noPossibleMove
