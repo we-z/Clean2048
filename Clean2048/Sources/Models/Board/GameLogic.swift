@@ -61,8 +61,8 @@ final class GameLogic: ObservableObject {
     
     @discardableResult
     func move(_ direction: Direction) -> State {
-        let currentState = GameState(tileMatrix: tileMatrix, score: score)
-        previousStates.append(currentState)
+        let previousMatrixSnapshot = tileMatrix!
+        let previousScore = score
         
         defer { objectWillChange.send(self) }
         defer { OperationQueue.main.addOperation { self.resetLastGestureDirection() } }
@@ -73,7 +73,7 @@ final class GameLogic: ObservableObject {
         var hasMergedBlocks: Bool = false
 
         let axis = direction == .left || direction == .right
-        let previousMatrixSnapshot = tileMatrix
+//        let previousMatrixSnapshot = tileMatrix
         
         for row in 0..<boardSize {
             var rowSnapshot = [IdentifiedTile?]()
@@ -104,11 +104,9 @@ final class GameLogic: ObservableObject {
                 tileMatrix.add($1, to: axis ? ($0, row) : (row, $0))
             }
         }
-        return finalizeMove(
-            previousMatrixSnapshot,
-            hasMoved: moved,
-            hasMergedBlocks: hasMergedBlocks
-        )
+        let result = finalizeMove(previousMatrixSnapshot, hasMoved: moved, hasMergedBlocks: hasMergedBlocks, previousScore: previousScore)
+
+        return result
     }
     
     func undo() {
@@ -159,18 +157,17 @@ final class GameLogic: ObservableObject {
         }
     }
     
-    private func finalizeMove(_ previousMatrixSnapshot: TileMatrixType?, hasMoved moved: Bool, hasMergedBlocks: Bool) -> State {
-        let areEqual = previousMatrixSnapshot?.equals(to: tileMatrix)
+    private func finalizeMove(_ previousMatrixSnapshot: TileMatrixType, hasMoved moved: Bool, hasMergedBlocks: Bool, previousScore: Int) -> State {
+        let areEqual = previousMatrixSnapshot.equals(to: tileMatrix)
         
         var result: State = .none
         
-        if moved && !(areEqual!) {
+        if moved && !areEqual {
             result = hasMergedBlocks ? .merged : .moved
             
-            if hasMergedBlocks == false {
-//                self.mergeMultiplier = 0
-                result = .merged
-            }
+            // Save the previous state before generating a new tile
+            let currentState = GameState(tileMatrix: previousMatrixSnapshot, score: previousScore)
+            previousStates.append(currentState)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.025 * TimeInterval(self.boardSize)) {
                 self.generateBlocks(generator: .single)
@@ -230,8 +227,13 @@ final class GameLogic: ObservableObject {
         resetLastGestureDirection()
         generateBlocks(generator: .double)
         score = 0
-        objectWillChange.send(self)
         previousStates.removeAll()
+        
+        // Save the initial state
+        let initialState = GameState(tileMatrix: tileMatrix, score: score)
+        previousStates.append(initialState)
+        
+        objectWillChange.send(self)
     }
     
     private enum TileGenerator {
