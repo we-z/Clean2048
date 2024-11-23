@@ -161,7 +161,9 @@ struct CompositeView: View {
                         Spacer()
                         Button {
                             impactLight.impactOccurred()
-                            logic.undo()
+                            if !hasGameEnded {
+                                logic.undo()
+                            }
                         } label: {
                             Text("Undo")
                                 .font(.title3)
