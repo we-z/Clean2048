@@ -47,7 +47,7 @@ struct TileView: View {
                     .overlay(color)
                 
                 Text(title())
-                    .font(.system(size: fontSize(proxy), weight: .bold, design: .monospaced))
+                    .font(.system(size: fontSize(proxy)))
                     .id(number)
                     .foregroundColor(tileColorTheme.font)
                     .transition(AnyTransition.scale(scale: 0.2).combined(with: .opacity).animation(.modalSpring(duration: 0.3)))

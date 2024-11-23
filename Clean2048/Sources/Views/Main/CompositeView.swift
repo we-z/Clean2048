@@ -77,37 +77,71 @@ struct CompositeView: View {
                 Color.black
                     .ignoresSafeArea()
                 VStack {
+                    HStack{
+                        Text("Tip $1")
+                            .font(.callout)
+                            .foregroundColor(.white)
+                            .padding(12)
+                            .background{
+                                Color.white
+                                    .opacity(0.1)
+                            }
+                            .cornerRadius(6)
+                            .padding(.horizontal)
+                        Spacer()
+                    }
                     Spacer()
-                    Text("Best")
-                        .bold()
-                        .font(Font.system(.title))
-                        .foregroundColor(.gray)
-                    
-                    Text("\(bestScore)")
-                        .font(Font.system(.largeTitle).weight(.black))
-                        .foregroundColor(.white)
-                        .transition(AnyTransition.move(edge: .bottom).combined(with: .opacity))
-                        .id("Score \(self.bestScore)")
-                    Spacer()
-                    Text(hasGameEnded ? "Game Over" : "Score")
-                        .bold()
-                        .font(Font.system(.largeTitle))
-                        .foregroundColor(.gray)
-                    
-                    Text("\(score)")
-                        .font(Font.system(.largeTitle).weight(.black))
-                        .foregroundColor(.white)
-                        .transition(AnyTransition.move(edge: .bottom).combined(with: .opacity))
-                        .id("Score \(self.score)")
-                    
+                    if hasGameEnded{
+                        VStack {
+                            Text("Game Over")
+                                .font(Font.system(.title))
+                                .foregroundColor(.gray)
+                            
+                            Text("\(score)")
+                                .font(Font.system(.largeTitle))
+                                .foregroundColor(.white)
+                                .transition(AnyTransition.move(edge: .bottom).combined(with: .opacity))
+                                .id("Score \(self.score)")
+                        }
+                    } else {
+                        HStack {
+                            
+                            Spacer()
+                            VStack {
+                                Text(hasGameEnded ? "Game Over" : "Score")
+                                    .font(Font.system(.title))
+                                    .foregroundColor(.gray)
+                                
+                                Text("\(score)")
+                                    .font(Font.system(.largeTitle))
+                                    .foregroundColor(.white)
+                                    .transition(AnyTransition.move(edge: .bottom).combined(with: .opacity))
+                                    .id("Score \(self.score)")
+                            }
+                            Spacer()
+                            VStack {
+                                Text("Best")
+                                    .font(Font.system(.title))
+                                    .foregroundColor(.gray)
+                                
+                                Text("\(bestScore)")
+                                    .font(Font.system(.largeTitle))
+                                    .foregroundColor(.white)
+                                    .transition(AnyTransition.move(edge: .bottom).combined(with: .opacity))
+                                    .id("Score \(self.bestScore)")
+                            }
+                            Spacer()
+                            
+                        }
+                    }
                     Spacer()
                     Button {
                         impactSoft.impactOccurred()
                         resetGame()
                     } label: {
-                        Text("New Game")
+                        Text("Reset")
                             .font(.title3)
-                            .bold()
+//                            .bold()
                             .foregroundColor(.white)
                             .padding()
                             .padding(.horizontal)
