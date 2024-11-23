@@ -89,7 +89,7 @@ struct TileBoardView: View {
         let maxSide = min(proxy.size.width, proxy.size.height)
         let paddingFactor = maxSide / 100
         
-        return maxSide - (paddingFactor * 10)
+        return maxSide - (paddingFactor * 3)
     }
     
     private func calculateTileSize(_ proxy: GeometryProxy, interTilePadding: CGFloat = 12) -> CGFloat {
