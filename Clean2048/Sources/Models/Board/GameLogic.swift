@@ -177,12 +177,12 @@ final class GameLogic: ObservableObject {
                 }
             }
         }
-        
-        // Always check if any moves are possible after each action
-        if !tileMatrix.isMovePossible() {
-            self.noPossibleMove = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) { [self] in
+            // Always check if any moves are possible after each action
+            if !tileMatrix.isMovePossible() {
+                self.noPossibleMove = true
+            }
         }
-        
         return result
     }
     

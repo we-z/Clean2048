@@ -11,8 +11,8 @@ struct Temp: View {
     var body: some View {
         ZStack {
             Color.black
-                .opacity(0.95)
-            Text("2048\nPro")
+//                .opacity(0.95)
+            Text("2048\nBLK")
 //                .multilineTextAlignment(.center)
                 .foregroundColor(.white)
                 .font(.system(size: 120))

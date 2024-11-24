@@ -24,7 +24,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7679EF792CEEFCB7008296B6 /* 2048 Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "2048 Pro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7679EF792CEEFCB7008296B6 /* 2048 BLK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "2048 BLK.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7679EF892CEEFCB9008296B6 /* Clean2048Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Clean2048Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7679EF932CEEFCB9008296B6 /* Clean2048UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Clean2048UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -85,7 +85,7 @@
 		7679EF7A2CEEFCB7008296B6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7679EF792CEEFCB7008296B6 /* 2048 Pro.app */,
+				7679EF792CEEFCB7008296B6 /* 2048 BLK.app */,
 				7679EF892CEEFCB9008296B6 /* Clean2048Tests.xctest */,
 				7679EF932CEEFCB9008296B6 /* Clean2048UITests.xctest */,
 			);
@@ -95,9 +95,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7679EF782CEEFCB7008296B6 /* 2048 Pro */ = {
+		7679EF782CEEFCB7008296B6 /* 2048 BLK */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7679EF9D2CEEFCB9008296B6 /* Build configuration list for PBXNativeTarget "2048 Pro" */;
+			buildConfigurationList = 7679EF9D2CEEFCB9008296B6 /* Build configuration list for PBXNativeTarget "2048 BLK" */;
 			buildPhases = (
 				7679EF752CEEFCB7008296B6 /* Sources */,
 				7679EF762CEEFCB7008296B6 /* Frameworks */,
@@ -110,11 +110,11 @@
 			fileSystemSynchronizedGroups = (
 				7679EF7B2CEEFCB7008296B6 /* Clean2048 */,
 			);
-			name = "2048 Pro";
+			name = "2048 BLK";
 			packageProductDependencies = (
 			);
 			productName = Clean2048;
-			productReference = 7679EF792CEEFCB7008296B6 /* 2048 Pro.app */;
+			productReference = 7679EF792CEEFCB7008296B6 /* 2048 BLK.app */;
 			productType = "com.apple.product-type.application";
 		};
 		7679EF882CEEFCB9008296B6 /* Clean2048Tests */ = {
@@ -200,7 +200,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7679EF782CEEFCB7008296B6 /* 2048 Pro */,
+				7679EF782CEEFCB7008296B6 /* 2048 BLK */,
 				7679EF882CEEFCB9008296B6 /* Clean2048Tests */,
 				7679EF922CEEFCB9008296B6 /* Clean2048UITests */,
 			);
@@ -258,12 +258,12 @@
 /* Begin PBXTargetDependency section */
 		7679EF8B2CEEFCB9008296B6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7679EF782CEEFCB7008296B6 /* 2048 Pro */;
+			target = 7679EF782CEEFCB7008296B6 /* 2048 BLK */;
 			targetProxy = 7679EF8A2CEEFCB9008296B6 /* PBXContainerItemProxy */;
 		};
 		7679EF952CEEFCB9008296B6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7679EF782CEEFCB7008296B6 /* 2048 Pro */;
+			target = 7679EF782CEEFCB7008296B6 /* 2048 BLK */;
 			targetProxy = 7679EF942CEEFCB9008296B6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -532,7 +532,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7679EF9D2CEEFCB9008296B6 /* Build configuration list for PBXNativeTarget "2048 Pro" */ = {
+		7679EF9D2CEEFCB9008296B6 /* Build configuration list for PBXNativeTarget "2048 BLK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7679EF9E2CEEFCB9008296B6 /* Debug */,
