@@ -115,7 +115,6 @@ final class GameLogic: ObservableObject {
         }
         self.tileMatrix = lastState.tileMatrix
         self.score = lastState.score
-        self.noPossibleMove = !tileMatrix.isMovePossible()
         self.objectWillChange.send(self)
     }
     
@@ -175,9 +174,12 @@ final class GameLogic: ObservableObject {
                 if hasMergedBlocks {
                     hapticManager.notification(type: .success)
                 }
+                // Always check if any moves are possible after each action
+                if !self.tileMatrix.isMovePossible() {
+                    self.noPossibleMove = true
+                }
             }
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) { [self] in
+        } else {
             // Always check if any moves are possible after each action
             if !tileMatrix.isMovePossible() {
                 self.noPossibleMove = true
@@ -185,6 +187,7 @@ final class GameLogic: ObservableObject {
         }
         return result
     }
+
     
     private func merge(blocks: inout [IdentifiedTile], reverse: Bool) -> Bool {
         var hasMerged: Bool = false
