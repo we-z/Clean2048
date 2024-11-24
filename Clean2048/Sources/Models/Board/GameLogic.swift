@@ -31,7 +31,7 @@ final class GameLogic: ObservableObject {
         return instanceId
     }
     private var cancellables = Set<AnyCancellable>()
-    private var tileMatrix: TileMatrixType!
+    @Published private(set) var tileMatrix: TileMatrixType!
     
     var tiles: TileMatrixType {
         return tileMatrix
@@ -42,6 +42,16 @@ final class GameLogic: ObservableObject {
     init(size: Int) {
         boardSize = size
         reset(boardSize: size)
+        
+        $tileMatrix
+            .debounce(for: .milliseconds(200), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                if !self.tileMatrix.isMovePossible() {
+                    self.noPossibleMove = true
+                }
+            }
+            .store(in: &cancellables)
     }
     
     func reset() {
@@ -174,15 +184,6 @@ final class GameLogic: ObservableObject {
                 if hasMergedBlocks {
                     hapticManager.notification(type: .success)
                 }
-                // Always check if any moves are possible after each action
-                if !self.tileMatrix.isMovePossible() {
-                    self.noPossibleMove = true
-                }
-            }
-        } else {
-            // Always check if any moves are possible after each action
-            if !tileMatrix.isMovePossible() {
-                self.noPossibleMove = true
             }
         }
         return result
