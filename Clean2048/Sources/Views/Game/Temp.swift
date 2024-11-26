@@ -12,10 +12,18 @@ struct Temp: View {
         ZStack {
             Color.black
 //                .opacity(0.95)
-            Text("2048\nBLK")
-//                .multilineTextAlignment(.center)
-                .foregroundColor(.white)
-                .font(.system(size: 120))
+            HStack{
+                Text("B")
+                    .foregroundColor(.white)
+                    .font(.system(size: 150))
+                Text("x")
+                    .foregroundColor(.white)
+                    .font(.system(size: 120))
+                    .offset(y: -12)
+                Text("N")
+                    .foregroundColor(.white)
+                    .font(.system(size: 150))
+            }
         }
     }
 }

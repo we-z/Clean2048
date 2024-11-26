@@ -6,17 +6,13 @@
 //
 
 import GameKit
-
+import SwiftUI
 
 import Foundation
 
 class GameCenter: ObservableObject {
 
     static let shared = GameCenter()
-
-    // API
-
-    // status of Game Center
 
     private(set) var isGameCenterEnabled: Bool = false
 
@@ -52,10 +48,9 @@ class GameCenter: ObservableObject {
 
     // leaderboard ID from App Store Connect
 
-    let leaderboardID = "grp.leaderboard"
+    let leaderboardID = "leaderboard"
 
     private var leaderboard: GKLeaderboard?
-    let leaderboardIdentifier = "leaderboard"
 
 
 }

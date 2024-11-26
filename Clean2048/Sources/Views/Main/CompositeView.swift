@@ -16,6 +16,7 @@ struct CompositeView: View {
     
     @State private var sideMenuViewState = CGSize.zero
     @State private var presentSideMenu = false
+    @State var showLeaderboard = false
     
     @ObservedObject private var logic: GameLogic
     @Environment(\.colorScheme) private var colorScheme: ColorScheme
@@ -96,7 +97,7 @@ struct CompositeView: View {
                         }
                         Spacer()
                         Button {
-                            impactLight.impactOccurred()
+                            showLeaderboard = true
                         } label: {
                             Text("Leaderboard")
                                 .font(.title3)
@@ -206,6 +207,13 @@ struct CompositeView: View {
                 }
             }
             .gesture(gesture, including: .all)
+            .fullScreenCover(isPresented: $showLeaderboard) {
+                LeaderboardView(
+                    leaderboardID: "leaderboard",
+                    playerScope: .global,
+                    timeScope: .allTime
+                )
+            }
     }
     
     private func resetGame() {
