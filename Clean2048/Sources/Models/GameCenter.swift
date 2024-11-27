@@ -13,19 +13,11 @@ import Foundation
 class GameCenter: ObservableObject {
 
     static let shared = GameCenter()
+    
+    // leaderboard ID from App Store Connect
 
-    private(set) var isGameCenterEnabled: Bool = false
+    let leaderboardID = "leaderboard"
 
-
-    func authenticateUser() {
-        print("authenticateUser called")
-        GKLocalPlayer.local.authenticateHandler = { _, error in
-            guard error == nil else {
-                print(error?.localizedDescription ?? "")
-                return
-            }
-        }
-    }
 
     // update local player score
 
@@ -41,16 +33,5 @@ class GameCenter: ObservableObject {
             }
         }
     }
-
-    // local player
-
-    private var localPlayer = GKLocalPlayer.local
-
-    // leaderboard ID from App Store Connect
-
-    let leaderboardID = "leaderboard"
-
-    private var leaderboard: GKLeaderboard?
-
 
 }
