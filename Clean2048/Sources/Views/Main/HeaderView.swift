@@ -14,6 +14,7 @@ struct HeaderView: View {
     @State var hasGameEnded = false
     @ObservedObject var logic = GameLogic.shared
     @ObservedObject var gameCenter: GameCenter = GameCenter.shared
+    @StateObject private var storeKitManager = StoreKitManager()
     @AppStorage("bestScore") var bestScore: Int = 0
     @State private var showAlert = false
     @State private var score: Int = 0 {
@@ -31,6 +32,17 @@ struct HeaderView: View {
                 Spacer()
                 Button {
                     impactLight.impactOccurred()
+                    Task {
+                            do {
+                                if let transaction = try await storeKitManager.purchase() {
+                                    // Handle successful purchase
+                                    print("Purchase successful: \(transaction)")
+                                }
+                            } catch {
+                                // Handle errors
+                                print("Purchase failed: \(error)")
+                            }
+                        }
                 } label: {
                     Text("Tip $5")
                         .bold()
@@ -47,6 +59,7 @@ struct HeaderView: View {
                 }
                 Spacer()
                 Button {
+                    impactLight.impactOccurred()
                     showLeaderboard = true
                     gameCenter.updateScore(score: bestScore)
                 } label: {
