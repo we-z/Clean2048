@@ -5,7 +5,7 @@
 //  Created by Wheezy Capowdis on 11/20/24.
 //
 
-@testable import Clean2048
+//@testable import Clean2048
 import Testing
 
 struct Clean2048Tests {

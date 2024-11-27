@@ -164,6 +164,9 @@ struct HeaderView: View {
         .onChange(of: logic.noPossibleMove) { (publisher) in
             let hasGameEnded = logic.noPossibleMove
             self.hasGameEnded = hasGameEnded
+            if hasGameEnded {
+                gameCenter.updateScore(score: bestScore)
+            }
         }
         .onReceive(logic.$score) { (publishedScore) in
             score = publishedScore
