@@ -15,6 +15,7 @@ struct HeaderView: View {
     @ObservedObject var logic: GameLogic = GameLogic.shared
     @ObservedObject var gameCenter: GameCenter = GameCenter.shared
     @AppStorage("bestScore") var bestScore: Int = 0
+    @State private var showAlert = false
     @State private var score: Int = 0 {
         didSet {
             if score > bestScore {
@@ -112,7 +113,7 @@ struct HeaderView: View {
                 Spacer()
                 Button {
                     impactLight.impactOccurred()
-                    resetGame()
+                    showAlert = true
                 } label: {
                     Text("Reset")
                         .font(.title3)
@@ -153,6 +154,12 @@ struct HeaderView: View {
         }
         .onReceive(logic.$score) { (publishedScore) in
             score = publishedScore
+        }
+        .alert("Reset Game?", isPresented: $showAlert) {
+            Button("Cancel", role: .cancel) { }
+            Button("Reset", role: .destructive) {
+                resetGame()
+            }
         }
         .fullScreenCover(isPresented: $showLeaderboard) {
             LeaderboardView(
