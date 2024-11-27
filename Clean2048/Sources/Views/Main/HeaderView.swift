@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+let impactLight = UIImpactFeedbackGenerator(style: .light)
+
 struct HeaderView: View {
     @State var showLeaderboard = false
     @State var hasGameEnded = false

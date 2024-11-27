@@ -2,24 +2,16 @@
 import SwiftUI
 import Combine
 
-let impactLight = UIImpactFeedbackGenerator(style: .light)
+
 
 struct CompositeView: View {
     
     // MARK: - Proeprties
     
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
-    
     @State private var ignoreGesture = false
-    
-    @State private var viewState = CGSize.zero
-    
-    @State private var sideMenuViewState = CGSize.zero
-    @State private var presentSideMenu = false
     
     
     @ObservedObject private var logic: GameLogic = GameLogic.shared
-    @Environment(\.colorScheme) private var colorScheme: ColorScheme
     
     // MARK: - Drag Gesture
     
