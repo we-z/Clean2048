@@ -22,7 +22,9 @@ struct HeaderView: View {
     
     var body: some View {
         VStack {
+            Spacer()
             HStack{
+                Spacer()
                 Button {
                     impactLight.impactOccurred()
                 } label: {
@@ -37,7 +39,7 @@ struct HeaderView: View {
                                 .opacity(0.1)
                         }
                         .cornerRadius(6)
-                        .padding(.horizontal)
+//                        .padding(.horizontal)
                 }
                 Spacer()
                 Button {
@@ -53,8 +55,9 @@ struct HeaderView: View {
                                 .opacity(0.1)
                         }
                         .cornerRadius(6)
-                        .padding(.horizontal)
+//                        .padding(.horizontal)
                 }
+                Spacer()
             }
             Spacer()
             if hasGameEnded{
@@ -138,6 +141,7 @@ struct HeaderView: View {
                 }
                 Spacer()
             }
+            Spacer()
         }
         .onReceive(logic.$noPossibleMove) { (publisher) in
             let hasGameEnded = logic.noPossibleMove

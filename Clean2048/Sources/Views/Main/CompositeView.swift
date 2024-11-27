@@ -61,22 +61,29 @@ struct CompositeView: View {
     // MARK: - Comformance to View protocol
     
     var body: some View {
+        GeometryReader { proxy in
             ZStack {
                 Color.black
                     .ignoresSafeArea()
-                VStack {
-                    
-                    
-                    HeaderView()
-                    TileBoardView(matrix: logic.tiles,
-                                  tileEdge: logic.lastGestureDirection.invertedEdge,
-                                  tileBoardSize: logic.boardSize)
-                    
+                if proxy.size.width < proxy.size.height {
+                    VStack {
+                        HeaderView()
+                        TileBoardView(matrix: logic.tiles,
+                                      tileEdge: logic.lastGestureDirection.invertedEdge,
+                                      tileBoardSize: logic.boardSize)
+                    }
+                } else {
+                    HStack{
+                        HeaderView()
+                        TileBoardView(matrix: logic.tiles,
+                                      tileEdge: logic.lastGestureDirection.invertedEdge,
+                                      tileBoardSize: logic.boardSize)
+                    }
                 }
                 
             }
             .gesture(gesture, including: .all)
-            
+        }
     }
 }
 
