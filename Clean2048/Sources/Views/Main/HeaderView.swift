@@ -13,6 +13,7 @@ struct HeaderView: View {
     @State var showLeaderboard = false
     @State var hasGameEnded = false
     @ObservedObject var logic: GameLogic = GameLogic.shared
+    @ObservedObject var gameCenter: GameCenter = GameCenter.shared
     @AppStorage("bestScore") var bestScore: Int = 0
     @State private var score: Int = 0 {
         didSet {
@@ -46,6 +47,7 @@ struct HeaderView: View {
                 Spacer()
                 Button {
                     showLeaderboard = true
+                    gameCenter.updateScore(score: bestScore)
                 } label: {
                     Text("Leaderboard")
                         .font(.title3)

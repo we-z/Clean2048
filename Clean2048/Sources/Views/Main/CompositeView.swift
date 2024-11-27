@@ -2,8 +2,6 @@
 import SwiftUI
 import Combine
 
-
-
 struct CompositeView: View {
     
     // MARK: - Proeprties
