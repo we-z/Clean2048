@@ -12,7 +12,7 @@ let impactLight = UIImpactFeedbackGenerator(style: .light)
 struct HeaderView: View {
     @State var showLeaderboard = false
     @State var hasGameEnded = false
-    @ObservedObject var logic: GameLogic = GameLogic.shared
+    @ObservedObject var logic = GameLogic.shared
     @ObservedObject var gameCenter: GameCenter = GameCenter.shared
     @AppStorage("bestScore") var bestScore: Int = 0
     @State private var showAlert = false
@@ -148,7 +148,7 @@ struct HeaderView: View {
             }
             Spacer()
         }
-        .onReceive(logic.$noPossibleMove) { (publisher) in
+        .onChange(of: logic.noPossibleMove) { (publisher) in
             let hasGameEnded = logic.noPossibleMove
             self.hasGameEnded = hasGameEnded
         }

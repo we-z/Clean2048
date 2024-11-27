@@ -9,7 +9,7 @@ struct CompositeView: View {
     @State private var ignoreGesture = false
     
     
-    @ObservedObject private var logic: GameLogic = GameLogic.shared
+    @ObservedObject var logic = GameLogic.shared
     
     // MARK: - Drag Gesture
     
