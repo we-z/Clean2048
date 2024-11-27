@@ -39,9 +39,11 @@ final class GameLogic: ObservableObject {
 
     // MARK: - Initializers
     
-    init(size: Int) {
-        boardSize = size
-        reset(boardSize: size)
+    static let shared = GameLogic()
+    
+    init() {
+        boardSize = 4
+        reset(boardSize: 4)
         
         $tileMatrix
             .debounce(for: .milliseconds(200), scheduler: DispatchQueue.main)
