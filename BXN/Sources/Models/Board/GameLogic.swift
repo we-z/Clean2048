@@ -42,18 +42,6 @@ final class GameLogic: ObservableObject {
     init() {
         boardSize = 4
         reset(boardSize: 4)
-        
-        $tileMatrix
-            .debounce(for: .milliseconds(1), scheduler: DispatchQueue.main)
-            .sink { [weak self] _ in
-                guard let self = self else { return }
-                print("checking if move is possible")
-                if !self.tileMatrix.isMovePossible() {
-                    print("no move is possible")
-                    self.noPossibleMove = true
-                }
-            }
-            .store(in: &cancellables)
     }
     
     func reset() {
@@ -186,10 +174,28 @@ final class GameLogic: ObservableObject {
                 if hasMergedBlocks {
                     hapticManager.notification(type: .success)
                 }
+                
+                // Check if moves are possible after generating the tile
+                self.checkForPossibleMoves()
             }
+        } else {
+            // If no move happened, still check for possible moves
+            self.checkForPossibleMoves()
         }
         return result
     }
+
+    // Check if any move is possible after each state change
+    private func checkForPossibleMoves() {
+        DispatchQueue.main.async {
+            self.noPossibleMove = !self.tileMatrix.isMovePossible()
+            if self.noPossibleMove {
+                print("No possible moves left!")
+            }
+            self.objectWillChange.send(self)
+        }
+    }
+
 
     
     private func merge(blocks: inout [IdentifiedTile], reverse: Bool) -> Bool {
@@ -234,7 +240,7 @@ final class GameLogic: ObservableObject {
         generateBlocks(generator: .double)
         score = 0
         previousStates.removeAll()
-        noPossibleMove = false 
+        noPossibleMove = false
         
         // Save the initial state
         let initialState = GameState(tileMatrix: tileMatrix, score: score)
