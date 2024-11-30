@@ -26,14 +26,14 @@
 /* Begin PBXFileReference section */
 		761F82532CF3E8450002CFDB /* 2048 BLK.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "2048 BLK.entitlements"; sourceTree = "<group>"; };
 		7679EF792CEEFCB7008296B6 /* BXN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BXN.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7679EF892CEEFCB9008296B6 /* Clean2048Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Clean2048Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7679EF932CEEFCB9008296B6 /* Clean2048UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Clean2048UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7679EF892CEEFCB9008296B6 /* BXNTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BXNTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7679EF932CEEFCB9008296B6 /* BXNUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BXNUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		7679EF7B2CEEFCB7008296B6 /* Clean2048 */ = {
+		7679EF7B2CEEFCB7008296B6 /* BXN */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Clean2048;
+			path = BXN;
 			sourceTree = "<group>";
 		};
 		7679EF8C2CEEFCB9008296B6 /* Clean2048Tests */ = {
@@ -77,7 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				761F82532CF3E8450002CFDB /* 2048 BLK.entitlements */,
-				7679EF7B2CEEFCB7008296B6 /* Clean2048 */,
+				7679EF7B2CEEFCB7008296B6 /* BXN */,
 				7679EF8C2CEEFCB9008296B6 /* Clean2048Tests */,
 				7679EF962CEEFCB9008296B6 /* Clean2048UITests */,
 				7679EF7A2CEEFCB7008296B6 /* Products */,
@@ -88,8 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				7679EF792CEEFCB7008296B6 /* BXN.app */,
-				7679EF892CEEFCB9008296B6 /* Clean2048Tests.xctest */,
-				7679EF932CEEFCB9008296B6 /* Clean2048UITests.xctest */,
+				7679EF892CEEFCB9008296B6 /* BXNTests.xctest */,
+				7679EF932CEEFCB9008296B6 /* BXNUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -110,7 +110,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				7679EF7B2CEEFCB7008296B6 /* Clean2048 */,
+				7679EF7B2CEEFCB7008296B6 /* BXN */,
 			);
 			name = BXN;
 			packageProductDependencies = (
@@ -119,9 +119,9 @@
 			productReference = 7679EF792CEEFCB7008296B6 /* BXN.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7679EF882CEEFCB9008296B6 /* Clean2048Tests */ = {
+		7679EF882CEEFCB9008296B6 /* BXNTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7679EFA02CEEFCB9008296B6 /* Build configuration list for PBXNativeTarget "Clean2048Tests" */;
+			buildConfigurationList = 7679EFA02CEEFCB9008296B6 /* Build configuration list for PBXNativeTarget "BXNTests" */;
 			buildPhases = (
 				7679EF852CEEFCB9008296B6 /* Sources */,
 				7679EF862CEEFCB9008296B6 /* Frameworks */,
@@ -135,16 +135,16 @@
 			fileSystemSynchronizedGroups = (
 				7679EF8C2CEEFCB9008296B6 /* Clean2048Tests */,
 			);
-			name = Clean2048Tests;
+			name = BXNTests;
 			packageProductDependencies = (
 			);
 			productName = Clean2048Tests;
-			productReference = 7679EF892CEEFCB9008296B6 /* Clean2048Tests.xctest */;
+			productReference = 7679EF892CEEFCB9008296B6 /* BXNTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7679EF922CEEFCB9008296B6 /* Clean2048UITests */ = {
+		7679EF922CEEFCB9008296B6 /* BXNUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7679EFA32CEEFCB9008296B6 /* Build configuration list for PBXNativeTarget "Clean2048UITests" */;
+			buildConfigurationList = 7679EFA32CEEFCB9008296B6 /* Build configuration list for PBXNativeTarget "BXNUITests" */;
 			buildPhases = (
 				7679EF8F2CEEFCB9008296B6 /* Sources */,
 				7679EF902CEEFCB9008296B6 /* Frameworks */,
@@ -158,11 +158,11 @@
 			fileSystemSynchronizedGroups = (
 				7679EF962CEEFCB9008296B6 /* Clean2048UITests */,
 			);
-			name = Clean2048UITests;
+			name = BXNUITests;
 			packageProductDependencies = (
 			);
 			productName = Clean2048UITests;
-			productReference = 7679EF932CEEFCB9008296B6 /* Clean2048UITests.xctest */;
+			productReference = 7679EF932CEEFCB9008296B6 /* BXNUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -188,7 +188,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7679EF742CEEFCB7008296B6 /* Build configuration list for PBXProject "Clean2048" */;
+			buildConfigurationList = 7679EF742CEEFCB7008296B6 /* Build configuration list for PBXProject "BXN" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -203,8 +203,8 @@
 			projectRoot = "";
 			targets = (
 				7679EF782CEEFCB7008296B6 /* BXN */,
-				7679EF882CEEFCB9008296B6 /* Clean2048Tests */,
-				7679EF922CEEFCB9008296B6 /* Clean2048UITests */,
+				7679EF882CEEFCB9008296B6 /* BXNTests */,
+				7679EF922CEEFCB9008296B6 /* BXNUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -413,7 +413,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.Clean2048;
+				PRODUCT_BUNDLE_IDENTIFIER = io.bxn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -444,7 +444,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.Clean2048;
+				PRODUCT_BUNDLE_IDENTIFIER = io.bxn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -467,7 +467,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clean2048.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Clean2048";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BXN.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BXN";
 			};
 			name = Debug;
 		};
@@ -486,7 +486,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clean2048.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Clean2048";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BXN.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BXN";
 			};
 			name = Release;
 		};
@@ -527,7 +527,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7679EF742CEEFCB7008296B6 /* Build configuration list for PBXProject "Clean2048" */ = {
+		7679EF742CEEFCB7008296B6 /* Build configuration list for PBXProject "BXN" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7679EF9B2CEEFCB9008296B6 /* Debug */,
@@ -545,7 +545,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7679EFA02CEEFCB9008296B6 /* Build configuration list for PBXNativeTarget "Clean2048Tests" */ = {
+		7679EFA02CEEFCB9008296B6 /* Build configuration list for PBXNativeTarget "BXNTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7679EFA12CEEFCB9008296B6 /* Debug */,
@@ -554,7 +554,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7679EFA32CEEFCB9008296B6 /* Build configuration list for PBXNativeTarget "Clean2048UITests" */ = {
+		7679EFA32CEEFCB9008296B6 /* Build configuration list for PBXNativeTarget "BXNUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7679EFA42CEEFCB9008296B6 /* Debug */,

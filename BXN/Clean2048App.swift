@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct Clean2048App: App {
+struct BXNApp: App {
     var body: some Scene {
         WindowGroup {
             CompositeView()
