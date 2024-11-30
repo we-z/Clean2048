@@ -178,7 +178,7 @@ struct HeaderView: View {
         }
         .fullScreenCover(isPresented: $showLeaderboard) {
             LeaderboardView(
-                leaderboardID: "leaderboard",
+                leaderboardID: "bxnleaderboard",
                 playerScope: .global,
                 timeScope: .allTime
             )

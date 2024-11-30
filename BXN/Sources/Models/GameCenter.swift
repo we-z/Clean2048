@@ -16,7 +16,7 @@ class GameCenter: ObservableObject {
     
     // leaderboard ID from App Store Connect
 
-    let leaderboardID = "leaderboard"
+    let leaderboardID = "bxnleaderboard"
 
 
     // update local player score
