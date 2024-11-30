@@ -161,10 +161,9 @@ struct HeaderView: View {
             }
             Spacer()
         }
-        .onChange(of: logic.noPossibleMove) { (publisher) in
-            let hasGameEnded = logic.noPossibleMove
-            self.hasGameEnded = hasGameEnded
-            if hasGameEnded {
+        .onChange(of: logic.noPossibleMove) { _ in
+            self.hasGameEnded = logic.noPossibleMove
+            if self.hasGameEnded {
                 gameCenter.updateScore(score: bestScore)
             }
         }

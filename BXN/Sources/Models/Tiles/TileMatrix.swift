@@ -86,26 +86,26 @@ struct TileMatrix<T>: CustomStringConvertible, CustomDebugStringConvertible wher
     }
     
     func isMovePossible() -> Bool {
-            let size = matrix.count
-            for x in 0..<size {
-                for y in 0..<size {
-                    if matrix[x][y] == nil {
-                        return true  // Empty space found, so a move is possible
-                    }
-                    let currentTile = matrix[x][y]!
-                    // Check right neighbor
-                    if x + 1 < size, let rightTile = matrix[x + 1][y], rightTile.value == currentTile.value {
-                        return true  // Merge possible to the right
-                    }
-                    // Check down neighbor
-                    if y + 1 < size, let downTile = matrix[x][y + 1], downTile.value == currentTile.value {
-                        return true  // Merge possible downward
-                    }
+        let size = matrix.count
+        for x in 0..<size {
+            for y in 0..<size {
+                if matrix[x][y] == nil {
+                    return true  // Empty space found, so a move is possible
+                }
+                let currentTile = matrix[x][y]!
+                // Check right neighbor
+                if x + 1 < size, let rightTile = matrix[x + 1][y], rightTile.value == currentTile.value {
+                    return true  // Merge possible to the right
+                }
+                // Check down neighbor
+                if y + 1 < size, let downTile = matrix[x][y + 1], downTile.value == currentTile.value {
+                    return true  // Merge possible downward
                 }
             }
-            // No moves are possible
-            return false
         }
+        // No moves are possible
+        return false
+    }
 
     // MARK: - Private Helpers
     

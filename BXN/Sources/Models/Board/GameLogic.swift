@@ -44,10 +44,12 @@ final class GameLogic: ObservableObject {
         reset(boardSize: 4)
         
         $tileMatrix
-            .debounce(for: .milliseconds(200), scheduler: DispatchQueue.main)
+            .debounce(for: .milliseconds(1), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 guard let self = self else { return }
+                print("checking if move is possible")
                 if !self.tileMatrix.isMovePossible() {
+                    print("no move is possible")
                     self.noPossibleMove = true
                 }
             }
@@ -232,6 +234,7 @@ final class GameLogic: ObservableObject {
         generateBlocks(generator: .double)
         score = 0
         previousStates.removeAll()
+        noPossibleMove = false 
         
         // Save the initial state
         let initialState = GameState(tileMatrix: tileMatrix, score: score)
