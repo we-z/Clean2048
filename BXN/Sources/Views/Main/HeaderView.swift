@@ -161,6 +161,9 @@ struct HeaderView: View {
             }
             Spacer()
         }
+        .onAppear{
+            self.hasGameEnded = logic.noPossibleMove
+        }
         .onChange(of: logic.noPossibleMove) { _ in
             self.hasGameEnded = logic.noPossibleMove
             if self.hasGameEnded {

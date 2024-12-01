@@ -30,13 +30,15 @@
           "locale" : "ar"
         }
       ],
-      "productID" : "tip5",
-      "referenceName" : "tip5",
+      "productID" : "tip",
+      "referenceName" : "tip",
       "type" : "Consumable"
     }
   ],
   "settings" : {
     "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
     "_storeKitErrors" : [
       {
         "current" : null,
