@@ -88,7 +88,43 @@
     ]
   },
   "subscriptionGroups" : [
+    {
+      "id" : "D8CE3C62",
+      "localizations" : [
 
+      ],
+      "name" : "subscriptions",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "4.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "293973B5",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Buy me a coffee on the weekends :)",
+              "displayName" : "Show love <3",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "sub5",
+          "recurringSubscriptionPeriod" : "P1W",
+          "referenceName" : "sub5",
+          "subscriptionGroupID" : "D8CE3C62",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        }
+      ]
+    }
   ],
   "version" : {
     "major" : 4,
