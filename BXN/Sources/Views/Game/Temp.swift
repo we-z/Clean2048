@@ -13,7 +13,7 @@ struct Temp: View {
             Color.black
             Color.white
                 .opacity(0.06)
-            LinearGradient(gradient: Gradient(colors: [.gray.opacity(0.2), .clear]), startPoint: UnitPoint(x: 0.5, y: 0), endPoint: UnitPoint(x: 0.5, y: 1))
+            LinearGradient(gradient: Gradient(colors: [.gray.opacity(0.3), .clear]), startPoint: UnitPoint(x: 0.5, y: 0), endPoint: UnitPoint(x: 0.5, y: 1))
                 .aspectRatio(contentMode: .fit)
 //            HStack{
                 Text("B")
