@@ -12,6 +12,7 @@ struct BXNApp: App {
     var body: some Scene {
         WindowGroup {
             CompositeView()
+                .prefersPersistentSystemOverlaysHidden()
         }
     }
 }
