@@ -12,22 +12,15 @@ struct Temp: View {
         ZStack {
             Color.black
             Color.white
-                .opacity(0.06)
-            LinearGradient(gradient: Gradient(colors: [.white, .white]), startPoint: UnitPoint(x: 0.5, y: 0), endPoint: UnitPoint(x: 0.5, y: 1))
                 .aspectRatio(contentMode: .fit)
-//            HStack{
-                Text("B")
+//                .cornerRadius(90)
+            Text("0")
                 .foregroundColor(.black)
-                    .font(.system(size: 240))
-//                Text("x")
-//                    .foregroundColor(.white)
-//                    .font(.system(size: 120))
-//                    .offset(y: -12)
-                Text("n")
+                .font(.system(size: 300))
+            Text("0")
                 .foregroundColor(.black)
-                    .font(.system(size: 120))
-                    .offset(x: 90, y: -110)
-//            }
+                .font(.system(size: 150))
+                .offset(x: 120, y: -100)
         }
     }
 }

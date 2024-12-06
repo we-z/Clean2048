@@ -40,7 +40,7 @@ final class GameLogic: ObservableObject {
     static let shared = GameLogic()
     
     init() {
-        boardSize = 5
+        boardSize = 4
         reset(boardSize: boardSize)
     }
     
