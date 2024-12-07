@@ -30,7 +30,6 @@ struct TileMatrix<T>: CustomStringConvertible, CustomDebugStringConvertible wher
     
     // MARK: - Properties
     
-    
     private(set) var matrix: [[T?]]
     let size: Int
     
@@ -113,8 +112,8 @@ struct TileMatrix<T>: CustomStringConvertible, CustomDebugStringConvertible wher
         guard
             isValid(index: from) && isValid(index: to),
             var source = self[from]
-            else {
-                return
+        else {
+            return
         }
         if let sourceReplacement = sourceReplacement {
             let value = sourceReplacement()
@@ -129,7 +128,7 @@ struct TileMatrix<T>: CustomStringConvertible, CustomDebugStringConvertible wher
         guard
             index.0 >= 0 && index.0 < size,
             index.1 >= 0 && index.1 < size
-            else { return false }
+        else { return false }
         return true
     }
 }

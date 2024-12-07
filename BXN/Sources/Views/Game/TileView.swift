@@ -15,9 +15,9 @@ struct TileView: View {
     
     private let number: Int?
     private let textId: String
-    private let fontProportionalWidth: CGFloat = 3
+    private let fontProportionalWidth: CGFloat = 2
         
-    // MARK: - Initialziers
+    // MARK: - Initializers
     
     init(number: Int) {
         self.number = number
@@ -35,7 +35,7 @@ struct TileView: View {
         return self.init()
     }
     
-    @State private var previousNumber: Int? = 2
+    @State private var previousNumber: Int? = 1
     
     // MARK: - Conformance to View protocol
     
@@ -62,7 +62,7 @@ struct TileView: View {
             }
             .zIndex(Double.greatestFiniteMagnitude)
             .clipped()
-            .cornerRadius(proxy.size.width / 12)
+            .cornerRadius(proxy.size.width / 6)
             .scaleEffect((number != nil) ? scale : 1)
             .animation(
                 .linear(duration: 0.1),
@@ -72,25 +72,19 @@ struct TileView: View {
                 .linear(duration: 0.1),
                 value: color
             )
-            .onAppear{
+            .onAppear {
                 scale = 1.0
             }
             .onChange(of: number) { newNumber in
-                if let previous = previousNumber {
-                    if let newNumber = newNumber, newNumber > previous {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                            color = .blue
-                            scale = 1.2
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-                                color = .clear
-                                scale = 1.0
-                            }
-                        }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    color = .blue
+                    scale = 1.1
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                        color = .clear
+                        scale = 1.0
                     }
                 }
-                
                 previousNumber = newNumber
-                
             }
         }
     }

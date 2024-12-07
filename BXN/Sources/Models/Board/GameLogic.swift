@@ -14,7 +14,7 @@ final class GameLogic: ObservableObject {
     
     typealias TileMatrixType = TileMatrix<IdentifiedTile>
     
-    // MARK: - Publishd Properties
+    // MARK: - Published Properties
     
     @Published private(set) var noPossibleMove: Bool = false
     @Published private(set) var score: Int = 0
@@ -40,7 +40,7 @@ final class GameLogic: ObservableObject {
     static let shared = GameLogic()
     
     init() {
-        boardSize = 4
+        boardSize = 3
         reset(boardSize: boardSize)
     }
     
@@ -73,8 +73,7 @@ final class GameLogic: ObservableObject {
         var hasMergedBlocks: Bool = false
 
         let axis = direction == .left || direction == .right
-//        let previousMatrixSnapshot = tileMatrix
-        
+
         for row in 0..<boardSize {
             var rowSnapshot = [IdentifiedTile?]()
             var compactRow = [IdentifiedTile]()
@@ -121,9 +120,9 @@ final class GameLogic: ObservableObject {
     // MARK: - Private Methods
     
     private struct GameState {
-            var tileMatrix: TileMatrix<IdentifiedTile>
-            var score: Int
-        }
+        var tileMatrix: TileMatrix<IdentifiedTile>
+        var score: Int
+    }
 
     private var previousStates: [GameState] = []
 
@@ -141,8 +140,9 @@ final class GameLogic: ObservableObject {
             if let block = tileMatrix[axis ? (col, row) : (row, col)] {
                 rowSnapshot.append(block)
                 compactRow.append(block)
+            } else {
+                rowSnapshot.append(nil)
             }
-            rowSnapshot.append(nil)
         }
     }
     
@@ -196,8 +196,10 @@ final class GameLogic: ObservableObject {
         }
     }
 
-
-    
+    // Merging rules:
+    // 1 + 1 = 2
+    // 2 + 2 = 3
+    // 3 + 3 = 1
     private func merge(blocks: inout [IdentifiedTile], reverse: Bool) -> Bool {
         var hasMerged: Bool = false
         if reverse {
@@ -208,16 +210,33 @@ final class GameLogic: ObservableObject {
             .map { (false, $0) }
             .reduce([(Bool, IdentifiedTile)]()) { acc, item in
                 if acc.last?.0 == false && acc.last?.1.value == item.1.value {
-                    // tile getting merged into dissappears here using dropLast
                     var accPrefix = Array(acc.dropLast())
                     var mergedBlock = item.1
-                    mergedBlock.value *= 2
+                    let oldValue = mergedBlock.value
+                    
+                    // Determine new value after merge
+                    // 1 -> merge into 2
+                    // 2 -> merge into 3
+                    // 3 -> merge into 1
+                    let newValue: Int
+                    switch oldValue {
+                    case 1:
+                        newValue = 2
+                    case 2:
+                        newValue = 3
+                    case 3:
+                        newValue = 1
+                    default:
+                        newValue = oldValue
+                    }
+                    
+                    mergedBlock.value = newValue
+                    
                     accPrefix.append((true, mergedBlock))
                     
 //                    self.mergeMultiplier += self.mergeMultiplierStep
-                    self.score += mergedBlock.value
+                    self.score += oldValue
                     hasMerged = true
-                    
                     return accPrefix
                 } else {
                     var accTmp = acc
@@ -280,14 +299,21 @@ final class GameLogic: ObservableObject {
         }
     }
     
+    // Modified tile generation:
+    // Only generate tiles with values 1, 2, or 3.
     private func generateBlock(in blankLocations: [IndexPair]) -> Bool {
         guard blankLocations.count >= 1 else {
             return false
         }
         let placeLocIndex = Int.random(in: 0..<blankLocations.count)
-        tileMatrix.add(IdentifiedTile(id: mutableInstanceId,
-                                        value: (((0...4).randomElement() ?? 0) == 0) ? 4 : 2),
-                         to: blankLocations[placeLocIndex])
+        let newValue = Int.random(in: 1...3) // 1, 2, or 3
+        tileMatrix.add(
+            IdentifiedTile(
+                id: mutableInstanceId,
+                value: newValue
+            ),
+            to: blankLocations[placeLocIndex]
+        )
         return true
     }
     
@@ -299,14 +325,16 @@ final class GameLogic: ObservableObject {
             return false
         }
         
-        var placeLocIndex = Int.random(in: 0..<blankLocations.count)
         var blankLocations = blankLocations
+        var placeLocIndex = Int.random(in: 0..<blankLocations.count)
         blankLocations[placeLocIndex] = lastLoc
         placeLocIndex = Int.random(in: 0..<(blankLocations.count - 1))
+        let newValue = Int.random(in: 1...3) // 1, 2, or 3
         tileMatrix.add(
             IdentifiedTile(
                 id: mutableInstanceId,
-                value: 2),
+                value: newValue
+            ),
             to: blankLocations[placeLocIndex]
         )
         return true
