@@ -15,7 +15,7 @@ struct HeaderView: View {
     @ObservedObject var logic = GameLogic.shared
     @ObservedObject var gameCenter: GameCenter = GameCenter.shared
     @StateObject private var storeKitManager = StoreKitManager()
-    @AppStorage("bestScore") var bestScore: Int = 0
+    @AppStorage("bestScoreBXN") var bestScore: Int = 0
     @State private var showAlert = false
     @State private var score: Int = 0 {
         didSet {
