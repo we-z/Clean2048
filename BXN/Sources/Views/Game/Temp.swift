@@ -10,13 +10,13 @@ import SwiftUI
 struct Temp: View {
     var body: some View {
         ZStack {
-            Color.white
             Color.black
+            Color.white
                 .aspectRatio(contentMode: .fit)
 //                .cornerRadius(90)
-            Text("3")
-                .foregroundColor(.white)
-                .font(.system(size: 300))
+            Text("6")
+                .foregroundColor(.black)
+                .font(.system(size: 360))
 //            Text("0")
 //                .foregroundColor(.white)
 //                .font(.system(size: 150))

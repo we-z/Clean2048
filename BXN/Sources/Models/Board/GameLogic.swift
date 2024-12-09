@@ -225,6 +225,10 @@ final class GameLogic: ObservableObject {
                     case 2:
                         newValue = 3
                     case 3:
+                        newValue = 4
+                    case 4:
+                        newValue = 5
+                    case 5:
                         newValue = 1
                     default:
                         newValue = oldValue
@@ -306,7 +310,7 @@ final class GameLogic: ObservableObject {
             return false
         }
         let placeLocIndex = Int.random(in: 0..<blankLocations.count)
-        let newValue = Int.random(in: 1...3) // 1, 2, or 3
+        let newValue = Int.random(in: 1...2) // 1, 2, or 3
         tileMatrix.add(
             IdentifiedTile(
                 id: mutableInstanceId,
@@ -329,7 +333,7 @@ final class GameLogic: ObservableObject {
         var placeLocIndex = Int.random(in: 0..<blankLocations.count)
         blankLocations[placeLocIndex] = lastLoc
         placeLocIndex = Int.random(in: 0..<(blankLocations.count - 1))
-        let newValue = Int.random(in: 1...3) // 1, 2, or 3
+        let newValue = Int.random(in: 1...2) // 1, 2, or 3
         tileMatrix.add(
             IdentifiedTile(
                 id: mutableInstanceId,

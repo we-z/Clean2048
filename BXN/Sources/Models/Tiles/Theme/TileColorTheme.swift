@@ -27,6 +27,10 @@ extension TileColorTheme {
             index = 1
         case 3:
             index = 2
+        case 4:
+            index = 3
+        case 5:
+            index = 4
         default:
             // If we ever get a number outside of 1, 2, or 3, fallback to default
             return (defaultColor, Color.black)
